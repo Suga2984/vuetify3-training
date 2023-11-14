@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import Playground from '@/components/organisms/playground/Playground.vue'
+import ScrollTestHeader from '@/components/organisms/playground/ScrollTest/ScrollTestHeader.vue'
+import ScrollTestList from '@/components/organisms/playground/ScrollTest/ScrollTestList.vue'
 </script>
 
 <template>
-  <Playground />
+  <div class="d-flex flex-column flex-grow-1 w-100 h-screen">
+    <ScrollTestHeader />
+    <ScrollTestList />
+  </div>
 </template>
