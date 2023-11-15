@@ -4,7 +4,7 @@ import ScrollTestList from '@/components/organisms/playground/ScrollTest/ScrollT
 </script>
 
 <template>
-  <div class="d-flex flex-column flex-grow-1 w-100 h-screen">
+  <div class="d-flex flex-column flex-grow-1 h-screen">
     <ScrollTestHeader />
     <ScrollTestList />
   </div>
