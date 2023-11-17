@@ -2,6 +2,9 @@
 import NoItemMessage from '@/components/molecules/NoItemMessage.vue'
 import { useScrollTestStore } from '@/stores/scrollTest'
 import { computed } from 'vue'
+import IdCell from './ListItem/IdCell.vue'
+import TodoCell from './ListItem/TodoCell.vue'
+import LoadingIntersection from '@/components/molecules/LoadingIntersection.vue'
 
 const scrollTestStore = useScrollTestStore()
 
@@ -25,7 +28,6 @@ async function onIntersect(isIntersecting: boolean) {
       <!-- TODO: 初回ローディング -->
       <v-progress-linear v-if="false" indeterminate color="cyan" />
       <template v-else>
-        <!-- TODO: molecules -->
         <template v-if="todoList.length === 0">
           <no-item-message />
         </template>
@@ -33,27 +35,17 @@ async function onIntersect(isIntersecting: boolean) {
           <div class="relative-container scroll-y">
             <div class="absolute-container">
               <div v-for="(item, index) in todoList" :key="index">
-                <!-- TODO: molecules -->
                 <div class="d-flex flex-row" style="height: 600px">
-                  <!-- TODO: molecules -->
-                  <div class="d-flex justify-center flex-grow-1">
-                    {{ item.id }}
-                  </div>
-                  <!-- TODO: molecules -->
-                  <div class="d-flex justify-center flex-grow-1">
-                    {{ item.todo }}
-                  </div>
+                  <id-cell :id="item.id"></id-cell>
+                  <todo-cell :todo="item.todo"></todo-cell>
                 </div>
                 <v-divider />
               </div>
-              <div v-if="isMoreData" v-intersect="onIntersect" />
-              <div class="d-flex justify-center py-2">
-                <v-progress-circular
-                  v-if="isLoading"
-                  indeterminate
-                  color="primary"
-                />
-              </div>
+              <loading-intersection
+                :is-more-data="isMoreData"
+                :is-loading="isLoading"
+                :on-intersect="onIntersect"
+              />
             </div>
           </div>
         </div>
