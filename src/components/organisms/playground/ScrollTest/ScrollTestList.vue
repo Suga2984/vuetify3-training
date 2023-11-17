@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import NoItemMessage from '@/components/molecules/NoItemMessage.vue'
 import { useScrollTestStore } from '@/stores/scrollTest'
 import { computed } from 'vue'
 
@@ -26,11 +27,7 @@ async function onIntersect(isIntersecting: boolean) {
       <template v-else>
         <!-- TODO: molecules -->
         <template v-if="todoList.length === 0">
-          <div class="relative-container">
-            <div class="absolute-container d-flex justify-center">
-              <span>該当するデータはありません。</span>
-            </div>
-          </div>
+          <no-item-message />
         </template>
         <div v-else class="d-flex flex-grow-1">
           <div class="relative-container scroll-y">
