@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PlaygroundView from '../views/PlaygroundView.vue'
+import HelloWorld from '../views/HelloWorldView.vue'
 
 export enum RouteName {
-  playground = 'playground'
+  playground = 'playground',
+  helloWorld = 'helloWorld'
 }
 
 const router = createRouter({
@@ -12,6 +14,11 @@ const router = createRouter({
       path: '/',
       name: RouteName.playground,
       component: PlaygroundView
+    },
+    {
+      path: '/hello',
+      name: RouteName.helloWorld,
+      component: HelloWorld
     }
   ]
 })
